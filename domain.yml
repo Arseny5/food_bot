@@ -1,0 +1,63 @@
+version: "3.1"
+intents:
+  - greet
+  - goodbye
+  - book_table
+  - order_food
+  - order_food_from_menu
+  - get_menu
+  - get_special_offers
+  - get_order_status
+  - get_order_id
+  - get_phone_number
+
+entities:
+  - numbers_list
+  - phone
+  - order_id
+
+slots:                          
+  numbers_list:         
+    type: list
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: numbers_list 
+  phone:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: phone
+  order_id:
+    type: float
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: order_id
+
+actions:
+  - action_book_table
+  - action_order_food
+  - action_get_menu
+  - action_get_special_offers
+  - action_get_order_status
+
+responses:
+  utter_greet:
+  - text: "Привет! Чем я могу помочь?"
+  
+  utter_goodbye:
+  - text: "До свидания! Хорошего дня!"
+  
+  utter_ask_order_id:
+  - text: "Пожалуйста, укажите номер вашего заказа."
+  
+  utter_default:
+  - text: "Извините, я не могу понять ваш запрос. Пожалуйста, повторите еще раз."
+
+  utter_ask_choice:
+  - text: "Укажите номера позиций для заказа"
+
+  utter_ask_phone_number:
+  - text: "Укажите номер телефона, на него Вам позвонит оператор"
